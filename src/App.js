@@ -8,7 +8,7 @@ function App() {
 
   const rolldice = () => {
     if (!selectednumber) return;
-    
+
     const newnum = Math.floor(Math.random() * 6) + 1;
     setnum(newnum);
 
@@ -17,7 +17,7 @@ function App() {
     } else {
       setscore((prev) => prev - 1);
     }
-    
+
     setselectednumber(undefined);
   };
 
@@ -32,7 +32,9 @@ function App() {
           <div className="card shadow-sm bg-light">
             <div className="card-body">
               <h5 className="card-title text-muted mb-0">Current Score</h5>
-              <p className="card-text display-4 fw-bold text-success">{score}</p>
+              <p className="card-text display-4 fw-bold text-success">
+                {score}
+              </p>
             </div>
           </div>
         </div>
@@ -46,16 +48,22 @@ function App() {
               <button
                 key={number}
                 className={`btn btn-lg shadow-sm number-choice 
-                  ${selectednumber === number ? 'btn-warning border-3' : 'btn-outline-secondary'}`}
+                  ${
+                    selectednumber === number
+                      ? "btn-warning border-3"
+                      : "btn-outline-secondary"
+                  }`}
                 onClick={() => setselectednumber(number)}
-                style={{ width: '60px', height: '60px', fontWeight: 'bold' }}
+                style={{ width: "60px", height: "60px", fontWeight: "bold" }}
               >
                 {number}
               </button>
             ))}
           </div>
           {!selectednumber && (
-            <p className="mt-3 text-danger fw-bold">Please select a number to play.</p>
+            <p className="mt-3 text-danger fw-bold">
+              Please select a number to play.
+            </p>
           )}
         </div>
       </div>
@@ -67,7 +75,7 @@ function App() {
           <h3 className="mb-4">Click the Dice to Roll!</h3>
           <div
             onClick={rolldice}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             className="d-inline-block p-3 rounded-3 shadow-lg roll-area"
           >
             <img
@@ -85,8 +93,15 @@ function App() {
           <ul className="list-unstyled">
             <li>1. Select any number from the list.</li>
             <li>2. Click on the dice image to roll it.</li>
-            <li>3. If the selected number is equal to the dice number, you get <span className="text-success fw-bold">2 points</span>.</li>
-            <li>4. If your guess is wrong, <span className="text-danger fw-bold">1 point</span> will be deducted.</li>
+            <li>
+              3. If the selected number is equal to the dice number, you get{" "}
+              <span className="text-success fw-bold">2 points</span>.
+            </li>
+            <li>
+              4. If your guess is wrong,{" "}
+              <span className="text-danger fw-bold">1 point</span> will be
+              deducted.
+            </li>
           </ul>
         </div>
       </div>
